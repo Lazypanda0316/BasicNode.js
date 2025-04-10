@@ -1,4 +1,5 @@
 import User from "../models/user.js";
+import bcrypt from "bcrypt"
 
 //register
 export const register = async (req, res) => {
@@ -19,13 +20,17 @@ export const register = async (req, res) => {
       });
     }
 
+    //to encrypt password must be used before saving
+    const bypassword = await bcrypt.hash(password,10)
+
     const user = await User.create({
       firstName,
       lastName,
       email,
       mobile,
-      password,
+      password:bypassword,
     });
+     
 
     res.status(201).json({
       success: true,

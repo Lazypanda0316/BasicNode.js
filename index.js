@@ -3,6 +3,7 @@ import dotenv from "dotenv"
 import morgan from "morgan"
 import ConnectDB from "./config/db.js"
 import userRoute from "./routes/user.js"
+import productRoute from "./routes/product.js"
 
 //env configure
 dotenv.config()
@@ -16,7 +17,7 @@ const PORT = process.env.PORT
 
 
 //routing
-
+app.use("/api/v1",productRoute)
 app.use("/api/v1",userRoute)
 //express routing
 app.get("/",(req,res)=>{

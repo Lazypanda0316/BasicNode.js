@@ -112,7 +112,7 @@ export const deleteProduct = async (req, res) => {
         });
       }
   
-      await product.deleteOne(); // or product.remove();
+      await product.deleteOne();
   
       return res.status(200).json({
         success: true,
